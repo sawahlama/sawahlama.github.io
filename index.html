@@ -1122,5 +1122,14 @@
         }
     </script>
 
+    <!-- Script Otomatis Mencatat Pengunjung ke Google Sheets -->
+    <script>
+        const urlAPI = 'https://script.google.com/macros/s/AKfycbxWtamJUnsoODAft9FH6Cmd2wQ4YlEtrAAJ3SZJ62il4Nto2HBorCjJV_JY11sfayyG/exec'; 
+        
+        fetch(urlAPI + '?action=catat')
+            .then(response => console.log("Kunjungan berhasil dicatat sistem."))
+            .catch(error => console.error("Gagal mencatat kunjungan:", error));
+    </script>
+
 </body>
 </html>
