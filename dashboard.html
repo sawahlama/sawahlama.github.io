@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Sobat Lama</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+
+    <!-- Custom Tailwind Config (Sama dengan halaman utama) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#e6f4ff',
+                            100: '#cceaff',
+                            200: '#99d5ff',
+                            300: '#66bfff',
+                            400: '#33aaff',
+                            500: '#0099ff',
+                            600: '#007acc',
+                            700: '#005c99',
+                            800: '#003d66',
+                            900: '#001f33',
+                            950: '#001424'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- NAVBAR ADMIN -->
+    <nav class="sticky top-0 z-50 bg-slate-900 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Identitas Kiri -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <span class="block text-white font-bold text-sm tracking-wide">PANEL ADMIN</span>
+                        <span class="block text-brand-300 text-[10px] uppercase tracking-widest">Sobat Lama - Sawah Lama</span>
+                    </div>
+                </div>
+
+                <!-- Tombol Kanan -->
+                <div class="flex items-center gap-4">
+                    <div class="hidden sm:block text-right mr-4 border-r border-slate-700 pr-4">
+                        <span class="block text-slate-300 text-xs font-medium">Status Sistem</span>
+                        <span class="block text-emerald-400 text-xs font-bold flex items-center gap-1 justify-end">
+                            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Live
+                        </span>
+                    </div>
+                    <!-- Tombol Kembali ke Website -->
+                    <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-globe"></i> <span class="hidden sm:inline">Lihat Website</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- KONTEN UTAMA -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <!-- Header Dashboard -->
+        <div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Ikhtisar Pelayanan Harian</h1>
+                <p class="text-slate-500 text-sm mt-1">Pantau pergerakan data pengunjung dan pengajuan administrasi warga secara real-time.</p>
+            </div>
+            <!-- Indikator Tanggal -->
+            <div class="bg-white border border-slate-200 px-4 py-2 rounded-lg shadow-sm flex items-center gap-3">
+                <i class="fa-regular fa-calendar text-brand-600"></i>
+                <span id="tanggal-hari-ini" class="text-sm font-bold text-slate-700">Hari ini</span>
+            </div>
+        </div>
+
+        <!-- GRID KARTU STATISTIK (Angka dummy sebagai placeholder) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            
+            <!-- KARTU 1: PENGUNJUNG WEBSITE -->
+            <div class="bg-gradient-to-br from-brand-600 to-brand-800 rounded-2xl p-6 shadow-lg shadow-brand-900/20 text-white flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
+                    <i class="fa-solid fa-users text-8xl"></i>
+                </div>
+                <div class="relative z-10 flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <span class="font-bold text-brand-100 text-sm tracking-wider uppercase">Pengunjung Hari Ini</span>
+                </div>
+                <div class="relative z-10">
+                    <span id="angka-pengunjung" class="text-4xl font-black">---</span>
+                    <span class="text-brand-200 text-sm ml-1 font-medium">Orang</span>
+                </div>
+            </div>
+
+            <!-- KARTU 2: SKTM -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">SKTM</span>
+                </div>
+                <div>
+                    <!-- Tambahkan id="angka-sktm" di sini -->
+                    <span id="angka-sktm" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 3: SKU -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">SKU</span>
+                </div>
+                <div>
+                    <span id="angka-sku" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 4: DOMISILI -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">Domisili</span>
+                </div>
+                <div>
+                    <span id="angka-domisili" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 5: PENGHASILAN -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">Penghasilan</span>
+                </div>
+                <div>
+                    <span id="angka-penghasilan" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 6: PINDAH -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">Surat Pindah</span>
+                </div>
+                <div>
+                    <span id="angka-pindah" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 7: KEMATIAN -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-slate-100 text-slate-700 rounded-xl flex items-center justify-center group-hover:bg-slate-700 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <span class="font-bold text-slate-600 text-sm">Kematian</span>
+                </div>
+                <div>
+                    <span id="angka-kematian" class="text-3xl font-black text-slate-900">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
+                </div>
+            </div>
+
+            <!-- KARTU 8: TOTAL LAYANAN -->
+            <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-slate-700 text-white rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <span class="font-bold text-slate-300 text-sm">Total Keseluruhan</span>
+                </div>
+                <div>
+                    <span id="angka-total" class="text-3xl font-black text-white">---</span>
+                    <span class="text-slate-400 text-sm ml-1 font-medium">Berkas Harian</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- AREA REKAPITULASI KEPENDUDUKAN (RINCIAN RT) -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
+            
+            <!-- Header -->
+            <div class="mb-8 border-b border-slate-100 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-users-rectangle text-brand-500 mr-2"></i> Rekapitulasi Penduduk per RT</h2>
+                    <p class="text-sm text-slate-500 mt-1">Data sebaran warga terdaftar di wilayah Kelurahan Sawah Lama.</p>
+                </div>
+                <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-md flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-sm"><i class="fa-solid fa-id-card"></i></div>
+                    <div>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-brand-300">Total Warga</span>
+                        <div class="leading-none mt-0.5"><span id="angka-total-penduduk" class="text-xl font-black">---</span> <span class="text-xs">Jiwa</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid 2 Kolom (Lingkungan 1 & 2) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- BLOK LINGKUNGAN I -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-brand-500"></i> Lingkungan I</h3>
+                        <div class="bg-brand-100 text-brand-700 px-3 py-1 rounded-lg text-sm font-bold">
+                            Total: <span id="angka-lk1">---</span> Jiwa
+                        </div>
+                    </div>
+                    
+                    <!-- Grid RT Lingkungan 1 -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 001</span><span id="angka-rt1-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 002</span><span id="angka-rt2-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 003</span><span id="angka-rt3-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 004</span><span id="angka-rt4-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 005</span><span id="angka-rt5-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 006</span><span id="angka-rt6-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 007</span><span id="angka-rt7-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 008</span><span id="angka-rt8-lk1" class="text-base font-bold text-slate-700">---</span></div>
+                    </div>
+                </div>
+
+                <!-- BLOK LINGKUNGAN II -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-blue-500"></i> Lingkungan II</h3>
+                        <div class="bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold">
+                            Total: <span id="angka-lk2">---</span> Jiwa
+                        </div>
+                    </div>
+                    
+                    <!-- Grid RT Lingkungan 2 -->
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 001</span><span id="angka-rt1-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 002</span><span id="angka-rt2-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 003</span><span id="angka-rt3-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 004</span><span id="angka-rt4-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 005</span><span id="angka-rt5-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 006</span><span id="angka-rt6-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 007</span><span id="angka-rt7-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 008</span><span id="angka-rt8-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 009</span><span id="angka-rt9-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 010</span><span id="angka-rt10-lk2" class="text-base font-bold text-slate-700">---</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER ADMIN -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center mt-auto">
+        <p class="text-slate-400 text-sm font-medium">&copy; Sistem Portal Sobat Lama - Panel Admin Internal</p>
+    </footer>
+
+    <!-- Script Tanggal Otomatis -->
+    <script>
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('tanggal-hari-ini').innerText = new Date().toLocaleDateString('id-ID', dateOptions);
+    </script>
+
+    <!-- Script Mengambil Data dari Google Sheets (PINDAHKAN KE SINI) -->
+    <script>
+        async function ambilDataPelayanan() {
+            // Definisikan elemen yang akan diubah
+            const elemen = {
+                pengunjung: document.getElementById('angka-pengunjung'),
+                sktm: document.getElementById('angka-sktm'),
+                sku: document.getElementById('angka-sku'),
+                domisili: document.getElementById('angka-domisili'),
+                penghasilan: document.getElementById('angka-penghasilan'),
+                pindah: document.getElementById('angka-pindah'),
+                kematian: document.getElementById('angka-kematian'),
+                total: document.getElementById('angka-total'),
+                
+                // ELEMEN KEPENDUDUKAN BARU
+                penduduk: document.getElementById('angka-total-penduduk'),
+                lk1: document.getElementById('angka-lk1'),
+                lk2: document.getElementById('angka-lk2'),
+                
+                rt1_lk1: document.getElementById('angka-rt1-lk1'),
+                rt2_lk1: document.getElementById('angka-rt2-lk1'),
+                rt3_lk1: document.getElementById('angka-rt3-lk1'),
+                rt4_lk1: document.getElementById('angka-rt4-lk1'),
+                rt5_lk1: document.getElementById('angka-rt5-lk1'),
+                rt6_lk1: document.getElementById('angka-rt6-lk1'),
+                rt7_lk1: document.getElementById('angka-rt7-lk1'),
+                rt8_lk1: document.getElementById('angka-rt8-lk1'),
+
+                rt1_lk2: document.getElementById('angka-rt1-lk2'),
+                rt2_lk2: document.getElementById('angka-rt2-lk2'),
+                rt3_lk2: document.getElementById('angka-rt3-lk2'),
+                rt4_lk2: document.getElementById('angka-rt4-lk2'),
+                rt5_lk2: document.getElementById('angka-rt5-lk2'),
+                rt6_lk2: document.getElementById('angka-rt6-lk2'),
+                rt7_lk2: document.getElementById('angka-rt7-lk2'),
+                rt8_lk2: document.getElementById('angka-rt8-lk2'),
+                rt9_lk2: document.getElementById('angka-rt9-lk2'),
+                rt10_lk2: document.getElementById('angka-rt10-lk2')
+            };
+            
+            // GANTI DENGAN URL WEB APP ANDA YANG BARU
+            const apiURL = 'https://script.google.com/macros/s/AKfycbxWtamJUnsoODAft9FH6Cmd2wQ4YlEtrAAJ3SZJ62il4Nto2HBorCjJV_JY11sfayyG/exec'; 
+
+            try {
+                // Beri efek loading pada semua kartu
+                const loadingHtml = '<i class="fa-solid fa-spinner fa-spin text-2xl opacity-50"></i>';
+                for (let key in elemen) {
+                    if (elemen[key]) elemen[key].innerHTML = loadingHtml;
+                }
+                
+                // Ambil data dari Apps Script
+                const response = await fetch(apiURL);
+                const data = await response.json();
+                
+                // CEK JIKA ADA ERROR DARI GOOGLE SHEETS
+                if (data.error) {
+                    alert("Pesan dari Google Sheets: " + data.error); // Munculkan pop-up error
+                    throw new Error(data.error); // Paksa sistem mengubah loading menjadi 'Err'
+                }
+                
+                // Masukkan angka ke masing-masing kartu jika sukses
+                for (let key in elemen) {
+                    if (elemen[key] && data[key] !== undefined) {
+                        elemen[key].innerText = data[key];
+                    }
+                }
+                
+            } catch (error) {
+                console.error("Gagal mengambil data:", error);
+                // Jika error, ubah putaran loading menjadi tulisan Err
+                for (let key in elemen) {
+                    if (elemen[key]) elemen[key].innerText = 'Err';
+                }
+            }
+        }
+
+        // Jalankan perintah saat halaman dibuka
+        document.addEventListener('DOMContentLoaded', ambilDataPelayanan);
+    </script>
+</body>
+</html>

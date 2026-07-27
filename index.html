@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3SPHZRV587"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3SPHZRV587');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobat Lama - Kelurahan Sawah Lama</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#e6f4ff',
+                            100: '#cceaff',
+                            200: '#99d5ff',
+                            300: '#66bfff',
+                            400: '#33aaff',
+                            500: '#0099ff', // Warna utama yang diminta
+                            600: '#007acc',
+                            700: '#005c99',
+                            800: '#003d66',
+                            900: '#001f33',
+                            950: '#001424'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- NAVBAR RESMI PEMERINTAH -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BAGIAN KIRI: LOGO & NAMA INSTANSI -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <!-- Logo Bandar Lampung -->
+                    <img src="img/LOGO_KOTA_BANDAR_LAMPUNG_BARU.png" 
+                         alt="Logo Pemkot Bandar Lampung" 
+                         class="h-10 sm:h-12 w-auto drop-shadow-sm">
+                    
+                    <!-- Teks Instansi -->
+                    <div class="flex flex-col justify-center">
+                        <span class="text-[9px] sm:text-[10px] font-bold text-slate-500 tracking-wider uppercase mb-0.5">Pemerintah Kota Bandar Lampung</span>
+                        <span class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight uppercase leading-none">Kelurahan Sawah Lama</span>
+                    </div>
+
+                    <!-- Garis Pemisah (Sembunyi di HP, Tampil di Laptop) -->
+                    <div class="hidden lg:block w-px h-8 bg-slate-300 mx-2"></div>
+                    
+                    <!-- Branding Sobat Lama (Sembunyi di HP, Tampil di Laptop) -->
+                    <div class="hidden lg:flex items-center gap-2">
+                        <span class="px-2 py-0.5 bg-brand-100 text-brand-700 text-[10px] font-bold rounded uppercase tracking-wider">Portal</span>
+                        <span class="text-lg font-black text-brand-600 tracking-tighter uppercase">Sobat Lama</span>
+                    </div>
+                </div>
+
+                <!-- Menu Desktop (Tersembunyi di HP) -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#beranda" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Beranda</a>
+                    <a href="#pelayanan" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Layanan Masyarakat</a>
+                    <a href="#profil" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Profil Kelurahan</a>
+                    <a href="#kontak" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-md shadow-brand-100 transition-all">Kontak</a>
+                </div>
+
+                <!-- Tombol Hamburger Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-600 focus:outline-none p-2 transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 py-4 space-y-2 flex flex-col">
+                <a href="#beranda" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:text-brand-600 hover:bg-brand-50" onclick="toggleMobileMenu()">Beranda</a>
+                <a href="#pelayanan" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:text-brand-600 hover:bg-brand-50" onclick="toggleMobileMenu()">Layanan Masyarakat</a>
+                <a href="#profil" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-700 hover:text-brand-600 hover:bg-brand-50" onclick="toggleMobileMenu()">Profil Kelurahan</a>
+                <a href="#kontak" class="block px-4 py-3 rounded-xl text-sm font-bold bg-brand-600 text-white text-center mt-2 shadow-md" onclick="toggleMobileMenu()">Kontak Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION / BERANDA -->
+    <section id="beranda" class="relative bg-slate-900 overflow-hidden min-h-[85vh] flex items-center">
+        <!-- Dekorasi Latar Belakang -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#0099FF_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-600 rounded-full filter blur-[150px] opacity-30"></div>
+        <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-blue-600 rounded-full filter blur-[150px] opacity-20"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span> Inovasi Kelurahan Sawah Lama
+                </span>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                    Selamat Datang di <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-300">SOBAT LAMA</span>
+                </h1>
+                
+                <div class="space-y-2">
+                    <p class="text-xl text-brand-100 font-semibold tracking-wide">
+                        Sistem Online Berbasis Pelayanan Masyarakat Kelurahan Sawah Lama
+                    </p>
+                    <p class="text-base text-slate-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Inovasi digital Kelurahan Sawah Lama untuk mempermudah akses informasi, pengurusan administrasi masyarakat, dan mewujudkan birokrasi yang transparan, cepat, dan ramah.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#pelayanan" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-900/40 flex items-center gap-2">
+                        <i class="fa-solid fa-file-signature"></i> Urus Surat Sekarang
+                    </a>
+                    <a href="#profil" class="border border-slate-600 hover:border-slate-400 hover:bg-slate-800/50 text-white font-semibold px-8 py-4 rounded-xl transition-all backdrop-blur">
+                        Profil Kelurahan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Kotak Sambutan Pejabat -->
+            <div class="lg:col-span-5">
+                <div class="bg-white/10 border border-white/10 backdrop-blur-md p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10">
+                        <i class="fa-solid fa-quote-right text-6xl text-white"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-brand-400 to-cyan-600 rounded-full flex items-center justify-center text-white text-2xl border-2 border-white/20 shadow-inner">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Sekretariat Kelurahan</h4>
+                            <p class="text-brand-400 text-xs font-semibold uppercase tracking-wider">Kelurahan Sawah Lama</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-200 text-sm italic font-light leading-relaxed relative z-10">
+                        "Melalui portal <strong>Sobat Lama</strong>, kami berkomitmen menghadirkan birokrasi yang cepat dan efisien. Masyarakat kini dapat mengakses informasi persyaratan administrasi dari rumah sebelum datang ke balai kelurahan."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PELAYANAN WARGA -->
+    <section id="pelayanan" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <h2 class="text-sm font-bold text-brand-600 tracking-widest uppercase">Portal Sobat Lama</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Pelayanan Administrasi masyarakat</p>
+            <p class="text-slate-500 font-light">Pilih jenis layanan administrasi yang Anda butuhkan dan siapkan kelengkapan berkasnya.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- KARTU LAJUR SKTM -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-rose-50 group-hover:bg-rose-500 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-rose-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Tidak Mampu (SKTM)</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan pembuatan Surat Keterangan Tidak Mampu.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-sktm')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- KARTU LAJUR SKU -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-blue-50 group-hover:bg-blue-600 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-blue-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Usaha (SKU)</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan penerbitan legalitas kepemilikan usaha mikro/kecil (UMKM) masyarakat Sawah Lama untuk pengajuan permodalan perbankan atau keperluan lainnya.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-sku')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- KARTU LAJUR SURAT KETERANGAN DOMISILI -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-emerald-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Domisili</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan penerbitan surat keterangan tempat tinggal bagi masyarakat maupun badan usaha di wilayah Sawah Lama.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-domisili')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- KARTU LAJUR SURAT KETERANGAN PENGHASILAN -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-amber-50 group-hover:bg-amber-500 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-amber-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Penghasilan</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan pembuatan surat rincian pendapatan/penghasilan masyarakat untuk keperluan pendidikan (beasiswa) atau perbankan.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-penghasilan')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- KARTU LAJUR SURAT KETERANGAN PINDAH -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-purple-50 group-hover:bg-purple-500 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-purple-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Pindah</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan pengantar pindah domisili antar kelurahan, kecamatan, kota, maupun antar provinsi.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-pindah')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- KARTU LAJUR SURAT KETERANGAN KEMATIAN -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-slate-100 group-hover:bg-slate-700 group-hover:text-white transition-colors rounded-2xl flex items-center justify-center text-slate-600 mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Surat Keterangan Kematian</h3>
+                    <p class="text-slate-500 text-sm font-light leading-relaxed mb-8">
+                        Layanan surat pengantar kematian masyarakat untuk pengurusan akta di Disdukcapil atau keperluan ahli waris.
+                    </p>
+                </div>
+                <button onclick="openModal('modal-kematian')" class="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 text-sm font-bold py-4 px-4 rounded-xl transition-all">
+                    Lihat Persyaratan Berkas <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROFIL KELURAHAN -->
+    <section id="profil" class="py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-3">
+                <h2 class="text-sm font-bold text-brand-400 tracking-widest uppercase">Mengenal Lebih Dekat</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Profil Kelurahan Sawah Lama</p>
+                <div class="w-20 h-1.5 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- LETAK GEOGRAFIS -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-28">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-brand-500/20 text-brand-400 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            Letak Geografis
+                        </h3>
+                        <p class="text-slate-300 font-light leading-relaxed text-lg">
+                            Kelurahan Sawah Lama memiliki luas 20,5h, berada di titik strategis dengan batas-batas tata ruang administratif yang terhubung langsung dengan pusat aktivitas masyarakat.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                            <span class="block text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">Sebelah Utara</span>
+                            <span class="text-base font-medium text-slate-200">Kelurahan Kebon Jeruk</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                            <span class="block text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">Sebelah Selatan</span>
+                            <span class="text-base font-medium text-slate-200">Kelurahan Sawah Brebes</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                            <span class="block text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">Sebelah Timur</span>
+                            <span class="text-base font-medium text-slate-200">Kelurahan Tanjung Agung</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                            <span class="block text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">Sebelah Barat</span>
+                            <span class="text-base font-medium text-slate-200">Kelurahan Gunung Sari</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ilustrasi Geografis (Slider Gambar dengan Tombol Manual Kiri & Kanan) -->
+                <div class="relative h-full min-h-[300px] lg:min-h-[400px] bg-slate-800 border border-slate-700 rounded-3xl overflow-hidden shadow-xl group">
+                    
+                    <!-- Kumpulan Slide Gambar -->
+                    <div id="image-slider" class="w-full h-full relative">
+                        <!-- Slide 1 -->
+                        <img src="img/foto_kantor.jpg" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 z-10" alt="Kegiatan 1">
+                        
+                        <!-- Slide 2 -->
+                        <img src="img/foto_kegiatan.jpg" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0" alt="Kegiatan 2">
+                        
+                        <!-- Slide 3 -->
+                        <img src="img/foto_pelayanan.jpg" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0" alt="Kegiatan 3">
+                    </div>
+
+                    <!-- Tombol Previous (Kiri) -->
+                    <button id="btn-prev-slide" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-slate-900/30 hover:bg-brand-600/90 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 group/btn">
+                        <i class="fa-solid fa-chevron-left text-lg group-hover/btn:-translate-x-0.5 transition-transform"></i>
+                    </button>
+
+                    <!-- Tombol Next (Kanan) -->
+                    <button id="btn-next-slide" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-slate-900/30 hover:bg-brand-600/90 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 group/btn">
+                        <i class="fa-solid fa-chevron-right text-lg group-hover/btn:translate-x-0.5 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SUSUNAN ORGANISASI KELURAHAN -->
+            <div class="mb-28">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold mb-3">Susunan Organisasi Pemerintahan</h3>
+                    <p class="text-slate-400 text-base font-light">Struktur kepemimpinan dan aparatur Kelurahan Sawah Lama.</p>
+                </div>
+
+                <!-- WADAH ORG CHART (Bisa discroll horizontal di layar kecil) -->
+                <div class="w-full overflow-x-auto pb-10 scrollbar-hide">
+                    <div class="min-w-[950px] flex flex-col items-center mx-auto pt-4">
+
+                        <!-- LEVEL 1: LURAH -->
+                        <div class="flex flex-col items-center cursor-pointer" 
+                             onclick="openProfilModal(this)"
+                             data-nama="Rismeliyar, S.E."
+                             data-jabatan="Lurah"
+                             data-foto="img/passphoto/LURAH.png"
+                             data-alamat="Kelurahan Sawah Lama"
+                        >
+                            <!-- Kartu Lurah -->
+                            <div class="bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-6 w-[320px] text-center z-10 shadow-2xl relative">
+                                <img src="img/passphoto/LURAH.png" alt="Foto Lurah" class="w-20 h-20 mx-auto rounded-full object-cover mb-4 border-2 border-brand-500/40 shadow-lg">
+                                <h5 class="font-extrabold text-lg text-white">Rismeliyar,S.E.</h5>
+                                <p class="text-sm text-brand-400 font-bold tracking-widest uppercase mt-1">Lurah</p>
+                            </div>
+                            <!-- Garis Turun dari Lurah -->
+                            <div class="w-[2px] h-10 bg-slate-500"></div>
+                        </div>
+
+                        <!-- LEVEL 2: BABINSA, SEKLUR, BHABINKAMTIBMAS -->
+                        <div class="flex w-full max-w-5xl -mt-[2px]"> <!-- -mt untuk menimpa celah garis -->
+                            
+                            <!-- Kiri: Babinsa -->
+                            <div class="flex-1 flex flex-col items-center relative" onclick="openProfilModal(this)" data-nama="Serda Ngadirin" data-jabatan="Babinsa" data-foto="img/passphoto/BABINSA.png" data-alamat="Koramil 410-05/TKP">
+                                <!-- Garis siku ke tengah -->
+                                <div class="absolute top-0 right-0 w-1/2 h-[2px] bg-slate-500"></div>
+                                <!-- Garis turun ke kotak -->
+                                <div class="w-[2px] h-10 bg-slate-500"></div>
+                                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-[260px] text-center z-10 shadow-lg hover:border-green-500/50 transition-all cursor-pointer">
+                                    <img src="img/passphoto/BABINSA.png" alt="Foto Babinsa" class="w-14 h-14 mx-auto rounded-full object-cover mb-3 border-2 border-green-500/30">
+                                    <h5 class="font-bold text-white text-base">Serda Ngadirin</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Babinsa</p>
+                                </div>
+                            </div>
+
+                            <!-- Tengah: Seklur -->
+                            <div class="flex-1 flex flex-col items-center relative" onclick="openProfilModal(this)" data-nama="Achmad Eky Kurniawan, S.E., M.M." data-jabatan="Sekretaris Lurah" data-foto="img/passphoto/SEKLUR.png" data-alamat="Kelurahan Sawah Lama">
+                                <!-- Garis membentang menyambungkan Babinsa ke Bhabin -->
+                                <div class="absolute top-0 w-full h-[2px] bg-slate-500"></div>
+                                <!-- Garis turun tembus pandang -->
+                                <div class="w-[2px] h-10 bg-slate-500 relative z-10"></div>
+                                <div class="bg-brand-900/40 border-2 border-brand-500/50 rounded-2xl p-5 w-[280px] text-center z-10 shadow-2xl backdrop-blur-sm transform hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <img src="img/passphoto/SEKLUR.png" alt="Foto Sekretaris Lurah" class="w-14 h-14 mx-auto rounded-full object-cover mb-3 shadow-lg shadow-brand-500/30 border-2 border-brand-400">
+                                    <h5 class="font-bold text-base text-white">Achmad Eky Kurniawan,S.E.,M.M.</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Seklur</p>
+                                </div>
+                                <!-- Garis turun dari Seklur -->
+                                <div class="w-[2px] h-12 bg-slate-500"></div>
+                            </div>
+
+                            <!-- Kanan: Bhabinkamtibmas -->
+                            <div class="flex-1 flex flex-col items-center relative" onclick="openProfilModal(this)" data-nama="Aipda Budi Hermanto" data-jabatan="Bhabinkamtibmas" data-foto="img/passphoto/BHABINKAMTIBMAS.png" data-alamat="Polsek Tanjung Karang Timur">
+                                <!-- Garis siku ke tengah -->
+                                <div class="absolute top-0 left-0 w-1/2 h-[2px] bg-slate-500"></div>
+                                <!-- Garis turun ke kotak -->
+                                <div class="w-[2px] h-10 bg-slate-500"></div>
+                                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-[260px] text-center z-10 shadow-lg hover:border-amber-500/50 transition-all cursor-pointer">
+                                    <img src="img/passphoto/BHABINKAMTIBMAS.png" alt="Foto Bhabinkamtibmas" class="w-14 h-14 mx-auto rounded-full object-cover mb-3 border-2 border-amber-500/30">
+                                    <h5 class="font-bold text-white text-base">Aipda Budi Hermanto</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Bhabinkamtibmas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LEVEL 3 & 4: KASI DAN STAF BAWAHAN -->
+                        <div class="flex w-full max-w-5xl -mt-[2px]">
+                            
+                            <!-- Kolom 1: Kasi Pemerintahan & Staf -->
+                            <div class="flex-1 flex flex-col items-center relative">
+                                <div class="absolute top-0 right-0 w-1/2 h-[2px] bg-slate-500"></div>
+                                <div class="w-[2px] h-10 bg-slate-500 relative z-10"></div>
+                                <!-- Kotak Kasi -->
+                                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-[240px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="[-]" data-jabatan="Kasi Pemerintahan" data-foto="img/passphoto/KASI_PEMERINTAHAN.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/KASI_PEMERINTAHAN.png" alt="Foto Kasi Pemerintahan" class="w-12 h-12 mx-auto rounded-full object-cover mb-3 bg-slate-900 border border-slate-700">
+                                    <h5 class="font-bold text-white text-sm">[-]</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Kasi Pemerintahan</p>
+                                </div>
+                                <!-- Garis turun ke Staf -->
+                                <div class="w-[2px] h-8 bg-slate-500"></div>
+                                <!-- Kotak Staf -->
+                                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 w-[200px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="[-]" data-jabatan="Staf Pemerintahan" data-foto="img/passphoto/STAF_PEMERINTAHAN.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/STAF_PEMERINTAHAN.png" alt="Foto Staf" class="w-8 h-8 mx-auto rounded-full object-cover mb-2 bg-slate-900 border border-slate-600">
+                                    <h5 class="font-bold text-white text-xs">[-]</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Staf Pemerintahan</p>
+                                </div>
+                            </div>
+
+                            <!-- Kolom 2: Kasi Trantib & Staf -->
+                            <div class="flex-1 flex flex-col items-center relative">
+                                <div class="absolute top-0 w-full h-[2px] bg-slate-500"></div>
+                                <div class="w-[2px] h-10 bg-slate-500 relative z-10"></div>
+                                <!-- Kotak Kasi -->
+                                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-[240px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="Daswir, S.E." data-jabatan="Kasi Trantib" data-foto="img/passphoto/KASI_TRANTIB.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/KASI_TRANTIB.png" alt="Foto Kasi Trantib" class="w-12 h-12 mx-auto rounded-full object-cover mb-3 bg-slate-900 border border-slate-700">
+                                    <h5 class="font-bold text-white text-sm">Daswir,S.E.</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Kasi Trantib</p>
+                                </div>
+                                <!-- Garis turun ke Staf -->
+                                <div class="w-[2px] h-8 bg-slate-500"></div>
+                                <!-- Kotak Staf -->
+                                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 w-[200px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="Edo Saputra" data-jabatan="Staf Trantib" data-foto="img/passphoto/STAF_TRANTIB.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/STAF_TRANTIB.png" alt="Foto Staf" class="w-8 h-8 mx-auto rounded-full object-cover mb-2 bg-slate-900 border border-slate-600">
+                                    <h5 class="font-bold text-white text-xs">Edo Saputra</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Staf Trantib</p>
+                                </div>
+                            </div>
+
+                            <!-- Kolom 3: Kasi Pelayanan & Staf -->
+                            <div class="flex-1 flex flex-col items-center relative">
+                                <div class="absolute top-0 left-0 w-1/2 h-[2px] bg-slate-500"></div>
+                                <div class="w-[2px] h-10 bg-slate-500 relative z-10"></div>
+                                <!-- Kotak Kasi -->
+                                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-[240px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="[-]" data-jabatan="Kasi Pelayanan & Kesra" data-foto="img/passphoto/KASI_PELAYANAN.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/KASI_PELAYANAN.png" alt="Foto Kasi Pelayanan" class="w-12 h-12 mx-auto rounded-full object-cover mb-3 bg-slate-900 border border-slate-700">
+                                    <h5 class="font-bold text-white text-sm">[-]</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Kasi Pelayanan & Kesra</p>
+                                </div>
+                                <!-- Garis turun ke Staf -->
+                                <div class="w-[2px] h-8 bg-slate-500"></div>
+                                <!-- Kotak Staf -->
+                                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 w-[200px] text-center z-10 shadow-lg cursor-pointer" onclick="openProfilModal(this)" data-nama="[-]" data-jabatan="Staf Pelayanan" data-foto="img/passphoto/STAF_PELAYANAN.png" data-alamat="Kelurahan Sawah Lama">
+                                    <img src="img/passphoto/STAF_PELAYANAN.png" alt="Foto Staf" class="w-8 h-8 mx-auto rounded-full object-cover mb-2 bg-slate-900 border border-slate-600">
+                                    <h5 class="font-bold text-white text-xs">[-]</h5>
+                                    <p class="text-[10px] text-brand-300 font-bold tracking-widest uppercase mt-1">Staf Pelayanan</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUSUNAN ORGANISASI PAMONG KEWILAYAHAN -->
+            <div>
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold mb-3">Struktur Pamong Kewilayahan</h3>
+                    <p class="text-slate-400 text-base font-light">Pembagian ujung tombak pelayanan melalui Kepala Lingkungan dan Rukun Tetangga (RT).</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-12">
+                    <!-- KALING 1 LENGKAP DENGAN RT -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-8 lg:p-10 rounded-3xl relative overflow-hidden shadow-xl">
+                        <div class="absolute right-0 top-0 w-40 h-40 bg-brand-500/10 rounded-bl-full pointer-events-none"></div> 
+                        
+                        <!-- Header Kaling 1 -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-8">
+                            <div class="flex items-center gap-6 cursor-pointer"
+                                 onclick="openProfilModal(this)"
+                                 data-nama="Indra Gunawan"
+                                 data-jabatan="Kepala Lingkungan 1"
+                                 data-foto="img/passphoto/LKI.png"
+                                 data-alamat="Wilayah Lingkungan 1, Sawah Lama"
+                            >
+                                <!-- Foto Kaling -->
+                                <img src="img/passphoto/LKI.png" alt="Foto Kepala Lingkungan 1" class="w-24 h-24 rounded-full object-cover border-4 border-slate-700 shrink-0">
+                                <div>
+                                    <span class="px-3 py-1.5 bg-brand-500/20 text-brand-400 border border-brand-500/30 text-xs font-bold uppercase rounded-lg tracking-wider">Wilayah 1</span>
+                                    <h4 class="text-2xl lg:text-3xl font-bold text-white mt-4">Indra Gunawan</h4>
+                                    <p class="text-sm text-slate-400 font-medium mt-1">Kepala Lingkungan 1</p>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900/50 rounded-2xl p-4 border border-slate-700 flex items-center gap-4 shrink-0 self-start sm:self-center">
+                                <div class="w-12 h-12 bg-brand-500/20 rounded-xl text-brand-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-house-user"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-2xl font-extrabold text-white">8 RT</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Daftar RT Wilayah 1 -->
+                        <div class="pt-8 border-t border-slate-700/50">
+                            <h5 class="text-white text-sm font-bold uppercase tracking-wider mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-users text-brand-400"></i> Daftar Nama RT LINGKUNGAN I
+                            </h5>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Lazuardi Zazki" data-jabatan="Ketua RT 01 / Lingkungan 1" data-foto="img/passphoto/RT001LKI.png" data-alamat="Wilayah RT 01, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT001LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 01</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Lazuardi Zazki</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Muhammad Ikhsan" data-jabatan="Ketua RT 02 / Lingkungan 1" data-foto="img/passphoto/RT002LKI.png" data-alamat="Wilayah RT 02, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT002LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 02</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Muhammad Ikhsan</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="MGS Umar Agus" data-jabatan="Ketua RT 03 / Lingkungan 1" data-foto="img/passphoto/RT003LKI.png" data-alamat="Wilayah RT 03, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT003LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 03</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">MGS Umar Agus</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Pujianda Yani" data-jabatan="Ketua RT 04 / Lingkungan 1" data-foto="img/passphoto/RT004LKI.png" data-alamat="Wilayah RT 04, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT004LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 04</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Pujianda Yani</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Budhi Astuti" data-jabatan="Ketua RT 05 / Lingkungan 1" data-foto="img/passphoto/RT005LKI.png" data-alamat="Wilayah RT 05, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT005LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 05</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Budhi Astuti</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Achmad Syaifuddin" data-jabatan="Ketua RT 06 / Lingkungan 1" data-foto="img/passphoto/RT006LKI.png" data-alamat="Wilayah RT 06, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT006LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 06</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Achmad Syaifuddin</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Mirza Suhendra" data-jabatan="Ketua RT 07 / Lingkungan 1" data-foto="img/passphoto/RT007LKI.png" data-alamat="Wilayah RT 07, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT007LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 07</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Mirza Suhendra</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-brand-500/10 hover:border-brand-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Yunia Widiarti" data-jabatan="Ketua RT 08 / Lingkungan 1" data-foto="img/passphoto/RT008LKI.png" data-alamat="Wilayah RT 08, Lingkungan 1, Sawah Lama">
+                                    <img src="img/passphoto/RT008LKI.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-brand-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-brand-400 font-bold">RT 08</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Yunia Widiarti</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KALING 2 LENGKAP DENGAN RT -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-8 lg:p-10 rounded-3xl relative overflow-hidden shadow-xl"> 
+                        <div class="absolute right-0 top-0 w-40 h-40 bg-blue-500/10 rounded-bl-full pointer-events-none"></div>
+                        
+                        <!-- Header Kaling 2 -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-8">
+                            <div class="flex items-center gap-6 cursor-pointer"
+                                 onclick="openProfilModal(this)"
+                                 data-nama="Sudarsono"
+                                 data-jabatan="Kepala Lingkungan 2"
+                                 data-foto="img/passphoto/LKII.png"
+                                 data-alamat="Wilayah Lingkungan 2, Sawah Lama"
+                            >
+                                <!-- Foto Kaling -->
+                                <img src="img/passphoto/LKII.png" alt="Foto Kepala Lingkungan 2" class="w-24 h-24 rounded-full object-cover border-4 border-slate-700 shrink-0">
+                                <div>
+                                    <span class="px-3 py-1.5 bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold uppercase rounded-lg tracking-wider">Wilayah 2</span>
+                                    <h4 class="text-2xl lg:text-3xl font-bold text-white mt-4">Sudarsono</h4>
+                                    <p class="text-sm text-slate-400 font-medium mt-1">Kepala Lingkungan 2</p>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900/50 rounded-2xl p-4 border border-slate-700 flex items-center gap-4 shrink-0 self-start sm:self-center">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl text-blue-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-house-user"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-2xl font-extrabold text-white">10 RT</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Daftar RT Wilayah 2 -->
+                        <div class="pt-8 border-t border-slate-700/50">
+                            <h5 class="text-white text-sm font-bold uppercase tracking-wider mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-users text-blue-400"></i> Daftar Nama RT LINGKUNGAN II
+                            </h5>
+                            <!-- Menggunakan md:grid-cols-5 karena ada 10 RT agar simetris (2 baris x 5) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Tri Lestari" data-jabatan="Ketua RT 01 / Lingkungan 2" data-foto="img/passphoto/RT001LKII.png" data-alamat="Wilayah RT 01, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT001LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 01</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Tri Lestari</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Nur Irianto" data-jabatan="Ketua RT 02 / Lingkungan 2" data-foto="img/passphoto/RT002LKII.png" data-alamat="Wilayah RT 02, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT002LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 02</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Nur Irianto</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Susi Rosana" data-jabatan="Ketua RT 03 / Lingkungan 2" data-foto="img/passphoto/RT003LKII.png" data-alamat="Wilayah RT 03, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT003LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 03</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Susi Rosana</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Nurlela Wati" data-jabatan="Ketua RT 04 / Lingkungan 2" data-foto="img/passphoto/RT004LKII.png" data-alamat="Wilayah RT 04, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT004LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 04</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Nurlela Wati</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Agung Maryoko" data-jabatan="Ketua RT 05 / Lingkungan 2" data-foto="img/passphoto/RT005LKII.png" data-alamat="Wilayah RT 05, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT005LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 05</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Agung Maryoko</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Septiana Oktariani, S.I.P." data-jabatan="Ketua RT 06 / Lingkungan 2" data-foto="img/passphoto/RT006LKII.png" data-alamat="Wilayah RT 06, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT006LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 06</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Septiana Oktariani, S.I.P.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Kadarrohman" data-jabatan="Ketua RT 07 / Lingkungan 2" data-foto="img/passphoto/RT007LKII.png" data-alamat="Wilayah RT 07, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT007LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 07</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Kadarrohman</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Yanto Suja" data-jabatan="Ketua RT 08 / Lingkungan 2" data-foto="img/passphoto/RT008LKII.png" data-alamat="Wilayah RT 08, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT008LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 08</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Yanto Suja</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Sri Utami" data-jabatan="Ketua RT 09 / Lingkungan 2" data-foto="img/passphoto/RT009LKII.png" data-alamat="Wilayah RT 09, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT009LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 09</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Sri Utami</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group flex items-center gap-3 cursor-pointer" onclick="openProfilModal(this)" data-nama="Firmasyah" data-jabatan="Ketua RT 10 / Lingkungan 2" data-foto="img/passphoto/RT010LKII.png" data-alamat="Wilayah RT 10, Lingkungan 2, Sawah Lama">
+                                    <img src="img/passphoto/RT010LKII.png" alt="Foto RT" class="w-10 h-10 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-400 transition-colors">
+                                    <div>
+                                        <span class="block text-xs text-blue-400 font-bold">RT 10</span>
+                                        <span class="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">Firmasyah</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <!-- KONTAK & PETA LOKASI -->
+    <section id="kontak" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+            
+            <!-- Info Kontak Lengkap -->
+            <div class="w-full lg:w-5/12 p-10 lg:p-14 text-white flex flex-col justify-center">
+                <div class="mb-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-800 border border-brand-700 text-brand-300 text-xs font-bold uppercase tracking-wider mb-4">
+                        <i class="fa-solid fa-headset"></i> Hubungi Kami
+                    </div>
+                    <p class="text-3xl lg:text-4xl font-extrabold tracking-tight">Pusat Bantuan & Lokasi</p>
+                    <p class="text-brand-100/70 mt-3 font-light text-lg">Kunjungi Kantor kelurahan atau hubungi media sosial layanan resmi kami.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-brand-800 rounded-xl flex items-center justify-center text-brand-300 shrink-0 text-xl border border-brand-700"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg">Alamat Kantor Kelurahan</h4>
+                            <p class="text-sm text-brand-100/70 font-light mt-1.5 leading-relaxed">Kantor Kelurahan Sawah Lama,<br>Jl. Hayam Wuruk No. 64 Kelurahan Sawah Lama Kecamatan Tanjung Karang Timur,<br>Kota Bandar Lampung, Lampung.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-brand-800 rounded-xl flex items-center justify-center text-brand-300 shrink-0 text-xl border border-brand-700"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg">Jam Operasional Pelayanan</h4>
+                            <p class="text-sm text-brand-100/70 font-light mt-1.5 leading-relaxed">Senin - Kamis: 08.00 - 15.30 WIB<br>Jumat: 08.00 - 11.30 & 13.30 - 16.00 WIB</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-brand-800 rounded-xl flex items-center justify-center text-brand-300 shrink-0 text-xl border border-brand-700"><i class="fa-brands fa-instagram"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg">Instagram</h4>
+                            <p class="text-sm font-light mt-1.5 leading-relaxed">
+                                <a href="https://www.instagram.com/kelurahansawahlama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-brand-100/70 hover:text-white underline decoration-brand-100/30 underline-offset-4 transition-colors">
+                                    @kelurahansawahlama <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interaktif Map Embed -->
+            <div class="w-full lg:w-7/12 min-h-[400px] bg-slate-200 relative">
+                <!-- Kode iframe dari Anda telah dimasukkan di sini, dengan tambahan class "w-full h-full absolute inset-0" agar responsif -->
+                <iframe src="https://maps.google.com/maps?q=Kelurahan%20Sawah%20Lama,%20Tanjung%20Karang%20Timur,%20Bandar%20Lampung&t=&z=15&ie=UTF8&iwloc=&output=embed" width="600" height="450" class="absolute inset-0 w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-center relative">
+        <div class="flex items-center justify-center gap-3 mb-4">
+            <img src="img/LOGO_KOTA_BANDAR_LAMPUNG_BARU.png" alt="Logo Bandar Lampung" class="h-6 w-auto opacity-70">
+            <span class="text-xl font-extrabold text-white tracking-tight uppercase">SOBAT LAMA</span>
+        </div>
+        <p class="text-slate-400 text-sm font-light">Sistem Online Berbasis Pelayanan Masyarakat Kelurahan Sawah Lama &copy; 2026 Pemerintah Kota Bandar Lampung.</p>
+        <p class="text-slate-500 text-xs font-light mt-2">Dikelola oleh Sekretariat Kelurahan Sawah Lama, Kec. Tanjung Karang Timur.</p>
+        
+        <!-- Pintu Masuk Rahasia Admin -->
+        <button onclick="openModal('modal-login')" class="absolute bottom-4 right-6 text-slate-600 hover:text-brand-400 transition-colors focus:outline-none" title="Login Admin">
+            <i class="fa-solid fa-lock text-sm"></i>
+        </button>
+    </footer>
+
+    <!-- MODAL POP UP - SYARAT SKU -->
+    <div id="modal-sku" onclick="closeModal('modal-sku')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-store"></i></div> Syarat Pembuatan SKU</h3>
+                <button onclick="closeModal('modal-sku')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran Sobat Lama:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-brand-500 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-brand-500 mt-1"></i> <span>Fotokopi KTP pemilik usaha asli dan fotokopi.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-brand-500 mt-1"></i> <span>Fotokopi Kartu Keluarga (KK).</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-brand-500 mt-1"></i> <span>Foto cetak tempat usaha/kegiatan operasional yang sedang berjalan.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-brand-500 mt-1"></i> <span>Surat Pernyataan Kepemilikan Usaha bermeterai cukup.</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <!-- Tombol Tutup -->
+                <button onclick="closeModal('modal-sku')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                
+                <!-- Tombol Lanjutkan ke Google Form -->
+                <!-- Ganti href dengan link Google Form untuk SKU Anda -->
+                <a href="https://forms.gle/UN8Dj4YegtJaRyjDA" target="_blank" onclick="closeModal('modal-sku')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP - SYARAT DOMISILI -->
+    <div id="modal-domisili" onclick="closeModal('modal-domisili')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-house-chimney"></i></div> Syarat Keterangan Domisili</h3>
+                <button onclick="closeModal('modal-domisili')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <span>Fotokopi KTP dan Kartu Keluarga (KK).</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <span>Fotokopi Akta Pendirian Perusahaan (Khusus untuk domisili usaha/perusahaan).</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <button onclick="closeModal('modal-domisili')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                <a href="https://forms.gle/3odkRFretLWZ22zH9" target="_blank" onclick="closeModal('modal-domisili')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP - SYARAT PENGHASILAN -->
+    <div id="modal-penghasilan" onclick="closeModal('modal-penghasilan')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-money-bill-wave"></i></div> Syarat Keterangan Penghasilan</h3>
+                <button onclick="closeModal('modal-penghasilan')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i> <span>Fotokopi KTP dan Kartu Keluarga (KK).</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i> <span>Surat Pernyataan Penghasilan bermeterai dari pemohon (jika non-formal) atau Slip Gaji.</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <button onclick="closeModal('modal-penghasilan')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                <a href="https://forms.gle/YWt8DJiiuJ2DHV8f8" target="_blank" onclick="closeModal('modal-penghasilan')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP - SYARAT PINDAH -->
+    <div id="modal-pindah" onclick="closeModal('modal-pindah')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-truck-fast"></i></div> Syarat Surat Pindah</h3>
+                <button onclick="closeModal('modal-pindah')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-purple-500 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-purple-500 mt-1"></i> <span>Kartu Keluarga (KK) asli dan fotokopi.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-purple-500 mt-1"></i> <span>Fotokopi KTP pemohon yang akan pindah.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-purple-500 mt-1"></i> <span>Alamat tujuan pindah yang jelas dan lengkap.</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <button onclick="closeModal('modal-pindah')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                <a href="https://forms.gle/Dp7vwUuL3wcDDRsTA" target="_blank" onclick="closeModal('modal-pindah')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP - SYARAT KEMATIAN -->
+    <div id="modal-kematian" onclick="closeModal('modal-kematian')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center"><i class="fa-solid fa-file-invoice"></i></div> Syarat Surat Kematian</h3>
+                <button onclick="closeModal('modal-kematian')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-slate-700 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-slate-700 mt-1"></i> <span>Surat Keterangan Kematian dari Rumah Sakit / Dokter (jika ada).</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-slate-700 mt-1"></i> <span>KTP Asli Almarhum/Almarhumah.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-slate-700 mt-1"></i> <span>Fotokopi KK dan KTP pelapor (ahli waris).</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <button onclick="closeModal('modal-kematian')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                <a href="https://forms.gle/rnxyBziemfHtVoTV8" target="_blank" onclick="closeModal('modal-kematian')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PROFIL PAMONG -->
+    <div id="modal-profil" onclick="closeModal('modal-profil')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 relative cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <button onclick="closeModal('modal-profil')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 text-2xl transition-colors z-10"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center">
+                <img id="modal-profil-img" src="" alt="Tidak ada foto profil" class="w-full object-contain rounded-t-3xl bg-brand-900/70 max-h-[70vh]">
+                <div class="p-8">
+                    <h3 id="modal-profil-nama" class="text-2xl font-bold text-slate-900">Nama Lengkap</h3>
+                    <p id="modal-profil-jabatan" class="text-brand-600 font-semibold tracking-wider uppercase text-sm mt-1">Jabatan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP - LOGIN ADMIN -->
+    <div id="modal-login" onclick="closeModal('modal-login')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-sm w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-gradient-to-br from-slate-800 to-slate-900 text-brand-400 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg border border-slate-700">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="font-extrabold text-2xl text-slate-900 tracking-tight">Otorisasi Admin</h3>
+                <p class="text-xs text-slate-500 mt-1.5 font-medium uppercase tracking-wider">Portal Sobat Lama</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-1">Username</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="admin-username" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-700 placeholder-slate-300" placeholder="Masukkan username">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-1">Password</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-key absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="password" id="admin-password" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-700 placeholder-slate-300" placeholder="Masukkan password">
+                    </div>
+                </div>
+                
+                <!-- Pesan Error (Tersembunyi secara default) -->
+                <p id="login-error" class="hidden text-xs text-rose-500 font-bold flex items-center gap-1.5 bg-rose-50 p-3 rounded-xl border border-rose-100">
+                    <i class="fa-solid fa-circle-exclamation"></i> Username atau password salah!
+                </p>
+            </div>
+            
+            <div class="mt-8 flex gap-3 pt-6 border-t border-slate-100">
+                <button onclick="closeModal('modal-login')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-sm py-3.5 rounded-xl transition-colors text-center">Batal</button>
+                <button onclick="prosesLogin()" class="w-2/3 bg-slate-900 hover:bg-brand-600 text-white font-bold text-sm py-3.5 rounded-xl transition-all text-center shadow-lg shadow-slate-900/20">Masuk <i class="fa-solid fa-arrow-right-to-bracket ml-1.5"></i></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT UTAMA SOBAT LAMA -->
+    <script>
+        // ==========================================
+        // 1. LOGIKA UNTUK MODAL (POP-UP) LAYANAN
+        // ==========================================
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.setAttribute('data-state', 'open');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.setAttribute('data-state', 'closed');
+                // Tunggu animasi fade-out selesai sebelum menyembunyikan elemen
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }, 300);
+            }
+        }
+
+        // ==========================================
+        // 2. LOGIKA UNTUK POP-UP PROFIL PAMONG
+        // ==========================================
+        function openProfilModal(element) {
+            const nama = element.getAttribute('data-nama');
+            const jabatan = element.getAttribute('data-jabatan');
+            const foto = element.getAttribute('data-foto');
+
+            document.getElementById('modal-profil-img').src = foto;
+            document.getElementById('modal-profil-nama').innerText = nama;
+            document.getElementById('modal-profil-jabatan').innerText = jabatan;
+            
+            openModal('modal-profil');
+        }
+
+        // ==========================================
+        // 3. LOGIKA UNTUK MENU MOBILE (HP)
+        // ==========================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            if (menu && icon) {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
+
+        // ==========================================
+        // 4. LOGIKA UNTUK SLIDER GAMBAR PROFIL
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll(".slider-img");
+            const btnNext = document.getElementById("btn-next-slide");
+            const btnPrev = document.getElementById("btn-prev-slide");
+            let currentSlide = 0;
+            let slideTimer;
+
+            // Fungsi ke slide berikutnya (Maju)
+            function goToNextSlide() {
+                if(slides.length === 0) return; // Mencegah error jika gambar kosong
+                slides[currentSlide].classList.remove("opacity-100", "z-10");
+                slides[currentSlide].classList.add("opacity-0", "z-0");
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.remove("opacity-0", "z-0");
+                slides[currentSlide].classList.add("opacity-100", "z-10");
+            }
+
+            // Fungsi ke slide sebelumnya (Mundur)
+            function goToPrevSlide() {
+                if(slides.length === 0) return;
+                slides[currentSlide].classList.remove("opacity-100", "z-10");
+                slides[currentSlide].classList.add("opacity-0", "z-0");
+                
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.remove("opacity-0", "z-0");
+                slides[currentSlide].classList.add("opacity-100", "z-10");
+            }
+
+            // Fungsi menjalankan putaran 3 detik otomatis
+            function startSliderTimer() {
+                slideTimer = setInterval(goToNextSlide, 3000);
+            }
+
+            // Inisialisasi Slider jika gambar tersedia
+            if (slides.length > 0) {
+                startSliderTimer();
+
+                if (btnNext) {
+                    btnNext.addEventListener("click", function() {
+                        clearInterval(slideTimer);
+                        goToNextSlide();
+                        startSliderTimer();
+                    });
+                }
+
+                if (btnPrev) {
+                    btnPrev.addEventListener("click", function() {
+                        clearInterval(slideTimer);
+                        goToPrevSlide();
+                        startSliderTimer();
+                    });
+                }
+            }
+        });
+
+        // ==========================================
+        // 5. LOGIKA UNTUK LOGIN ADMIN
+        // ==========================================
+        function prosesLogin() {
+            const user = document.getElementById('admin-username').value;
+            const pass = document.getElementById('admin-password').value;
+            const errorMsg = document.getElementById('login-error');
+            
+            // PENTING: Anda bisa mengubah 'admin' dan 'sawahlama123' di bawah ini
+            // dengan username dan password yang Anda inginkan
+            if (user === 'admin' && pass === 'admin') {
+                errorMsg.classList.add('hidden'); // Sembunyikan pesan error
+                
+                // Animasi loading singkat sebelum pindah halaman
+                const btn = event.currentTarget;
+                btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Memuat...';
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html'; // Pindah ke dashboard admin
+                }, 500); // Jeda setengah detik
+                
+            } else {
+                // Munculkan pesan error dan getarkan sedikit (efek visual)
+                errorMsg.classList.remove('hidden');
+                errorMsg.classList.add('animate-pulse');
+                setTimeout(() => { errorMsg.classList.remove('animate-pulse'); }, 1000);
+            }
+        }
+        
+    </script>
+
+<!-- Sensor Perekam Kunjungan -->
+    <script>
+        // Ganti tulisan di bawah ini dengan URL Web App Anda
+        const urlAPI = 'https://script.google.com/macros/s/AKfycbxWtamJUnsoODAft9FH6Cmd2wQ4YlEtrAAJ3SZJ62il4Nto2HBorCjJV_JY11sfayyG/exec'; 
+
+        // Sistem pintar agar 1 orang yang me-refresh web berkali-kali hanya dihitung 1 kunjungan per hari
+        const hariIni = new Date().toDateString();
+        if(!localStorage.getItem('sudah_berkunjung_' + hariIni)) {
+             // Kirim laporan ke Google Sheets secara diam-diam (background)
+             fetch(urlAPI + '?action=catat', {mode: 'no-cors'})
+                .then(() => {
+                    localStorage.setItem('sudah_berkunjung_' + hariIni, 'ya');
+                });
+        }
+    </script>
+
+</body>
+</html>
