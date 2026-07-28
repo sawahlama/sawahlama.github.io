@@ -811,6 +811,29 @@
         </button>
     </footer>
 
+    <!-- MODAL POP UP - SYARAT SKTM -->
+    <div id="modal-sktm" onclick="closeModal('modal-sktm')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div class="flex justify-between items-center pb-5 border-b border-slate-100">
+                <h3 class="font-bold text-xl text-slate-900 flex items-center gap-3"><div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-hand-holding-heart"></i></div> Syarat Pembuatan SKTM</h3>
+                <button onclick="closeModal('modal-sktm')" class="text-slate-400 hover:text-slate-900 text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-6 space-y-4 text-base text-slate-600">
+                <p class="font-medium text-slate-800">Mohon lengkapi dokumen fisik berikut untuk diserahkan ke loket pendaftaran Sobat Lama:</p>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-rose-500 mt-1"></i> <span>Surat Pengantar asli dari Ketua RT setempat.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-rose-500 mt-1"></i> <span>Fotokopi KTP dan Kartu Keluarga (KK) pemohon.</span></li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-rose-500 mt-1"></i> <span>Surat Pernyataan Tidak Mampu bermeterai.</span></li>
+                </ul>
+            </div>
+            <div class="pt-5 border-t border-slate-100 flex gap-3">
+                <button onclick="closeModal('modal-sktm')" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center">Batal</button>
+                <!-- Ganti link '#' di bawah dengan link form Google Forms untuk SKTM -->
+                <a href="#" target="_blank" onclick="closeModal('modal-sktm')" class="block w-2/3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm py-3.5 px-5 rounded-xl transition-colors text-center shadow-md">Lanjutkan <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL POP UP - SYARAT SKU -->
     <div id="modal-sku" onclick="closeModal('modal-sku')" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer data-[state=open]:flex data-[state=closed]:hidden">
         <div onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 cursor-default animate-in fade-in-0 zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
@@ -1152,9 +1175,6 @@
                 .catch(error => console.error("Gagal mencatat kunjungan:", error));
         }
     </script>
-
-</body>
-</html>
 
 </body>
 </html>
