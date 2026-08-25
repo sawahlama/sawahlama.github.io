@@ -357,7 +357,7 @@
             };
             
             // GANTI DENGAN URL WEB APP ANDA YANG BARU
-            const apiURL = 'https://script.google.com/macros/s/AKfycbzenyXSqc8V9_N5XuNkCWnG3YAw54gvCmKYg8nroykyvxULGassF0fBOzXXKrTSZVNc/exec'; 
+            const apiURL = 'https://script.google.com/macros/s/AKfycbz5KyCqhlUVUJwJclVZ8VtQQqihvLe6Tcuo4bBQXIvuj42AmORcy_s2D4kjdUhtN3wD/exec'; 
 
             try {
                 // Beri efek loading pada semua kartu
@@ -395,72 +395,125 @@
         // Jalankan perintah saat halaman dibuka
         document.addEventListener('DOMContentLoaded', ambilDataPelayanan);
     </script>
-    <!-- Script Pencarian NIK -->
+    <!-- Script Pencarian NIK (Versi Lengkap 18 Data) -->
     <script>
         async function jalankanPencarian() {
             const nikInput = document.getElementById('input-nik').value;
             const wadahHasil = document.getElementById('hasil-pencarian');
             
-            // Cek jika kolom kosong
             if (!nikInput) {
                 alert('Tolong masukkan NIK terlebih dahulu!');
                 return;
             }
 
-            // Munculkan wadah hasil dan beri efek loading
             wadahHasil.classList.remove('hidden');
             wadahHasil.innerHTML = `
                 <div class="text-center py-4">
                     <i class="fa-solid fa-circle-notch fa-spin text-3xl text-brand-500 mb-3"></i>
-                    <p class="text-sm font-semibold text-slate-500 animate-pulse">Menjelajahi database Kelurahan...</p>
+                    <p class="text-sm font-semibold text-slate-500 animate-pulse">Menjelajahi 18 kolom data Kelurahan...</p>
                 </div>
             `;
 
-            // Ganti ini dengan URL Web App Apps Script Anda!
-            const urlAPI = 'https://script.google.com/macros/s/AKfycbzenyXSqc8V9_N5XuNkCWnG3YAw54gvCmKYg8nroykyvxULGassF0fBOzXXKrTSZVNc/exec';
+            // PASTIKAN LINK INI ADALAH MILIK ANDA
+            const urlAPI = 'https://script.google.com/macros/s/AKfycbz5KyCqhlUVUJwJclVZ8VtQQqihvLe6Tcuo4bBQXIvuj42AmORcy_s2D4kjdUhtN3wD/exec';
 
             try {
-                // Tembak data ke Google Apps Script
                 const response = await fetch(`${urlAPI}?action=cariNIK&nik=${nikInput}`);
                 const data = await response.json();
 
                 if (data.found) {
-                    // Jika ketemu, tampilkan identitasnya bergaya KTP
+                    // Render UI Biodata 2 Kolom
                     wadahHasil.innerHTML = `
-                        <div class="flex items-center gap-3 mb-4 border-b border-slate-200 pb-3">
-                            <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-check"></i></div>
-                            <h4 class="font-bold text-slate-800">Data Ditemukan Dalam Sistem</h4>
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                            <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-lg shadow-inner"><i class="fa-solid fa-user-check"></i></div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-800 text-lg tracking-tight">Biodata Penduduk Ditemukan</h4>
+                                <p class="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Sistem Kependudukan Sawah Lama</p>
+                            </div>
                         </div>
-                        <table class="w-full text-sm text-left">
-                            <tr>
-                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Nomor NIK</td>
-                                <td class="font-black text-slate-900 text-lg">: ${data.nik}</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Nama Lengkap</td>
-                                <td class="font-bold text-slate-800 text-base">: ${data.nama}</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Domisili RT</td>
-                                <td class="font-bold text-slate-800 text-base">: RT ${data.rt}</td>
-                            </tr>
-                        </table>
+                        
+                        <!-- GRID KIRI DAN KANAN -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+                            
+                            <!-- KOLOM KIRI -->
+                            <div class="space-y-4">
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nomor Induk Kependudukan (NIK)</span>
+                                    <span class="text-lg font-black text-slate-900 leading-tight">${data.nik || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nomor Kartu Keluarga (KK)</span>
+                                    <span class="text-sm font-bold text-slate-700">${data.kk || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama Lengkap</span>
+                                    <span class="text-base font-extrabold text-brand-600 uppercase">${data.nama || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tempat, Tanggal Lahir</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.tempatLahir || '-'}, ${data.tglLahir || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Jenis Kelamin / Gol. Darah</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.jk || '-'} <span class="text-slate-300 mx-1">|</span> Gol: ${data.golDarah || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Agama</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.agama || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Kewarganegaraan</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.wargaNegara || '-'}</span>
+                                </div>
+                            </div>
+
+                            <!-- KOLOM KANAN -->
+                            <div class="space-y-4">
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Alamat Lengkap</span>
+                                    <span class="text-sm font-bold text-slate-800 leading-snug">${data.alamat || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lingkungan / RT</span>
+                                    <span class="text-sm font-semibold text-slate-700">Lingkungan ${data.lingkungan || '-'} <span class="text-slate-300 mx-1">|</span> RT ${data.rt || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pendidikan Terakhir</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.pendidikan || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pekerjaan</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.pekerjaan || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status Perkawinan</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.statusKawin || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status Hubungan Keluarga</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.statusKeluarga || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama Orang Tua (Ayah / Ibu)</span>
+                                    <span class="text-sm font-semibold text-slate-700">Ayah: ${data.ayah || '-'} <br> Ibu: ${data.ibu || '-'}</span>
+                                </div>
+                            </div>
+
+                        </div>
                     `;
                 } else {
-                    // Jika tidak ada di Google Sheets
                     wadahHasil.innerHTML = `
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-xmark text-lg"></i></div>
+                        <div class="flex items-center gap-4 p-2">
+                            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-xmark text-xl"></i></div>
                             <div>
-                                <h4 class="font-bold text-rose-600">Tidak Ditemukan</h4>
-                                <p class="text-sm text-slate-600 mt-0.5">Warga dengan NIK <strong>${nikInput}</strong> tidak terdaftar dalam database Data Penduduk Sawah Lama.</p>
+                                <h4 class="font-bold text-rose-600 text-lg">Tidak Ditemukan</h4>
+                                <p class="text-sm text-slate-600 mt-0.5">Warga dengan NIK <strong>${nikInput}</strong> tidak terdaftar dalam database Data Penduduk.</p>
                             </div>
                         </div>
                     `;
                 }
             } catch (error) {
-                // Jika koneksi internet putus
-                wadahHasil.innerHTML = `<p class="text-center font-bold text-rose-500">Terjadi kesalahan sistem atau koneksi internet terputus.</p>`;
+                wadahHasil.innerHTML = `<p class="text-center font-bold text-rose-500 py-4"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Terjadi kesalahan sistem atau koneksi terputus.</p>`;
             }
         }
     </script>
