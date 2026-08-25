@@ -282,6 +282,27 @@
             </div>
         </div>
 
+        <!-- AREA PENCARIAN DATA WARGA (NIK) -->
+     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
+         <div class="mb-6">
+             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-magnifying-glass text-brand-500 mr-2"></i> Cari Data Warga Terdaftar</h2>
+             <p class="text-sm text-slate-500 mt-1">Cari identitas dan domisili warga berdasarkan 16 digit Nomor Induk Kependudukan (NIK).</p>
+         </div>
+
+         <div class="flex flex-col sm:flex-row gap-3">
+             <div class="relative flex-grow">
+                 <i class="fa-regular fa-id-card absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                 <input type="number" id="input-nik" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400" placeholder="Masukkan NIK Warga...">
+             </div>
+             <button onclick="jalankanPencarian()" class="bg-slate-900 hover:bg-brand-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 shrink-0">
+                 <i class="fa-solid fa-search"></i> Cari Data
+             </button>
+         </div>
+
+         <!-- Wadah Hasil -->
+         <div id="hasil-pencarian" class="hidden mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-5"></div>
+     </div>
+
     </main>
 
     <!-- FOOTER ADMIN -->
@@ -373,6 +394,75 @@
 
         // Jalankan perintah saat halaman dibuka
         document.addEventListener('DOMContentLoaded', ambilDataPelayanan);
+    </script>
+    <!-- Script Pencarian NIK -->
+    <script>
+        async function jalankanPencarian() {
+            const nikInput = document.getElementById('input-nik').value;
+            const wadahHasil = document.getElementById('hasil-pencarian');
+            
+            // Cek jika kolom kosong
+            if (!nikInput) {
+                alert('Tolong masukkan NIK terlebih dahulu!');
+                return;
+            }
+
+            // Munculkan wadah hasil dan beri efek loading
+            wadahHasil.classList.remove('hidden');
+            wadahHasil.innerHTML = `
+                <div class="text-center py-4">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl text-brand-500 mb-3"></i>
+                    <p class="text-sm font-semibold text-slate-500 animate-pulse">Menjelajahi database Kelurahan...</p>
+                </div>
+            `;
+
+            // Ganti ini dengan URL Web App Apps Script Anda!
+            const urlAPI = 'https://script.google.com/macros/s/AKfycbwZ6WxWOpTgYtfy5pCtAtGrCRvH1zDHnUOEaYQECBwLT9KVXc6k06zV4yJHpagzJvzQ/exec';
+
+            try {
+                // Tembak data ke Google Apps Script
+                const response = await fetch(`${urlAPI}?action=cariNIK&nik=${nikInput}`);
+                const data = await response.json();
+
+                if (data.found) {
+                    // Jika ketemu, tampilkan identitasnya bergaya KTP
+                    wadahHasil.innerHTML = `
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-200 pb-3">
+                            <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-check"></i></div>
+                            <h4 class="font-bold text-slate-800">Data Ditemukan Dalam Sistem</h4>
+                        </div>
+                        <table class="w-full text-sm text-left">
+                            <tr>
+                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Nomor NIK</td>
+                                <td class="font-black text-slate-900 text-lg">: ${data.nik}</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Nama Lengkap</td>
+                                <td class="font-bold text-slate-800 text-base">: ${data.nama}</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 font-semibold text-slate-500 w-32 uppercase tracking-widest text-[10px]">Domisili RT</td>
+                                <td class="font-bold text-slate-800 text-base">: RT ${data.rt}</td>
+                            </tr>
+                        </table>
+                    `;
+                } else {
+                    // Jika tidak ada di Google Sheets
+                    wadahHasil.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-xmark text-lg"></i></div>
+                            <div>
+                                <h4 class="font-bold text-rose-600">Tidak Ditemukan</h4>
+                                <p class="text-sm text-slate-600 mt-0.5">Warga dengan NIK <strong>${nikInput}</strong> tidak terdaftar dalam database Data Penduduk Sawah Lama.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                // Jika koneksi internet putus
+                wadahHasil.innerHTML = `<p class="text-center font-bold text-rose-500">Terjadi kesalahan sistem atau koneksi internet terputus.</p>`;
+            }
+        }
     </script>
 </body>
 </html>
