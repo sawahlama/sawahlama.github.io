@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <!-- GRID KARTU STATISTIK (Angka dummy sebagai placeholder) -->
+        <!-- GRID KARTU STATISTIK -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             
             <!-- KARTU 1: PENGUNJUNG WEBSITE -->
@@ -120,7 +120,6 @@
                     <span class="font-bold text-slate-600 text-sm">SKTM</span>
                 </div>
                 <div>
-                    <!-- Tambahkan id="angka-sktm" di sini -->
                     <span id="angka-sktm" class="text-3xl font-black text-slate-900">---</span>
                     <span class="text-slate-400 text-sm ml-1 font-medium">Berkas</span>
                 </div>
@@ -214,8 +213,6 @@
 
         <!-- AREA REKAPITULASI KEPENDUDUKAN (RINCIAN RT) -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
-            
-            <!-- Header -->
             <div class="mb-8 border-b border-slate-100 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-users-rectangle text-brand-500 mr-2"></i> Rekapitulasi Penduduk per RT</h2>
@@ -230,9 +227,7 @@
                 </div>
             </div>
             
-            <!-- Grid 2 Kolom (Lingkungan 1 & 2) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
                 <!-- BLOK LINGKUNGAN I -->
                 <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
                     <div class="flex items-center justify-between mb-5">
@@ -241,8 +236,6 @@
                             Total: <span id="angka-lk1">---</span> Jiwa
                         </div>
                     </div>
-                    
-                    <!-- Grid RT Lingkungan 1 -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 001</span><span id="angka-rt1-lk1" class="text-base font-bold text-slate-700">---</span></div>
                         <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 002</span><span id="angka-rt2-lk1" class="text-base font-bold text-slate-700">---</span></div>
@@ -263,8 +256,6 @@
                             Total: <span id="angka-lk2">---</span> Jiwa
                         </div>
                     </div>
-                    
-                    <!-- Grid RT Lingkungan 2 -->
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 001</span><span id="angka-rt1-lk2" class="text-base font-bold text-slate-700">---</span></div>
                         <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 002</span><span id="angka-rt2-lk2" class="text-base font-bold text-slate-700">---</span></div>
@@ -278,30 +269,29 @@
                         <div class="bg-white border border-slate-200 p-3 rounded-xl text-center shadow-sm"><span class="block text-[10px] font-bold text-slate-400 mb-1">RT 010</span><span id="angka-rt10-lk2" class="text-base font-bold text-slate-700">---</span></div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <!-- AREA PENCARIAN DATA WARGA (NIK) -->
-     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
-         <div class="mb-6">
-             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-magnifying-glass text-brand-500 mr-2"></i> Cari Data Warga Terdaftar</h2>
-             <p class="text-sm text-slate-500 mt-1">Cari identitas dan domisili warga berdasarkan 16 digit Nomor Induk Kependudukan (NIK).</p>
-         </div>
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
+            <div class="mb-6">
+                <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-magnifying-glass text-brand-500 mr-2"></i> Cari Data Warga Terdaftar</h2>
+                <p class="text-sm text-slate-500 mt-1">Cari identitas dan domisili warga berdasarkan 16 digit Nomor Induk Kependudukan (NIK).</p>
+            </div>
 
-         <div class="flex flex-col sm:flex-row gap-3">
-             <div class="relative flex-grow">
-                 <i class="fa-regular fa-id-card absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                 <input type="number" id="input-nik" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400" placeholder="Masukkan NIK Warga...">
-             </div>
-             <button onclick="jalankanPencarian()" class="bg-slate-900 hover:bg-brand-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 shrink-0">
-                 <i class="fa-solid fa-search"></i> Cari Data
-             </button>
-         </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-grow">
+                    <i class="fa-regular fa-id-card absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                    <input type="number" id="input-nik" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400" placeholder="Masukkan NIK Warga...">
+                </div>
+                <button onclick="jalankanPencarian()" class="bg-slate-900 hover:bg-brand-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 shrink-0">
+                    <i class="fa-solid fa-search"></i> Cari Data
+                </button>
+            </div>
 
-         <!-- Wadah Hasil -->
-         <div id="hasil-pencarian" class="hidden mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-5"></div>
-     </div>
+            <!-- Wadah Hasil -->
+            <div id="hasil-pencarian" class="hidden mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-5"></div>
+        </div>
 
     </main>
 
@@ -316,10 +306,9 @@
         document.getElementById('tanggal-hari-ini').innerText = new Date().toLocaleDateString('id-ID', dateOptions);
     </script>
 
-    <!-- Script Mengambil Data dari Google Sheets (PINDAHKAN KE SINI) -->
+    <!-- Script Statistik Dashboard -->
     <script>
         async function ambilDataPelayanan() {
-            // Definisikan elemen yang akan diubah
             const elemen = {
                 pengunjung: document.getElementById('angka-pengunjung'),
                 sktm: document.getElementById('angka-sktm'),
@@ -329,12 +318,9 @@
                 pindah: document.getElementById('angka-pindah'),
                 kematian: document.getElementById('angka-kematian'),
                 total: document.getElementById('angka-total'),
-                
-                // ELEMEN KEPENDUDUKAN BARU
                 penduduk: document.getElementById('angka-total-penduduk'),
                 lk1: document.getElementById('angka-lk1'),
                 lk2: document.getElementById('angka-lk2'),
-                
                 rt1_lk1: document.getElementById('angka-rt1-lk1'),
                 rt2_lk1: document.getElementById('angka-rt2-lk1'),
                 rt3_lk1: document.getElementById('angka-rt3-lk1'),
@@ -343,7 +329,6 @@
                 rt6_lk1: document.getElementById('angka-rt6-lk1'),
                 rt7_lk1: document.getElementById('angka-rt7-lk1'),
                 rt8_lk1: document.getElementById('angka-rt8-lk1'),
-
                 rt1_lk2: document.getElementById('angka-rt1-lk2'),
                 rt2_lk2: document.getElementById('angka-rt2-lk2'),
                 rt3_lk2: document.getElementById('angka-rt3-lk2'),
@@ -356,27 +341,22 @@
                 rt10_lk2: document.getElementById('angka-rt10-lk2')
             };
             
-            // GANTI DENGAN URL WEB APP ANDA YANG BARU
-            const apiURL = 'https://script.google.com/macros/s/AKfycbz5KyCqhlUVUJwJclVZ8VtQQqihvLe6Tcuo4bBQXIvuj42AmORcy_s2D4kjdUhtN3wD/exec'; 
+            const apiURL = 'https://script.google.com/macros/s/AKfycbwvbqJ-1IiVnwYJpeG4_MZkIhSPoUAL1kcg8l1CbCv8Qtfo_0QNRDl8EcREVnxSr7Nl/exec'; 
 
             try {
-                // Beri efek loading pada semua kartu
                 const loadingHtml = '<i class="fa-solid fa-spinner fa-spin text-2xl opacity-50"></i>';
                 for (let key in elemen) {
                     if (elemen[key]) elemen[key].innerHTML = loadingHtml;
                 }
                 
-                // Ambil data dari Apps Script
                 const response = await fetch(apiURL);
                 const data = await response.json();
                 
-                // CEK JIKA ADA ERROR DARI GOOGLE SHEETS
                 if (data.error) {
-                    alert("Pesan dari Google Sheets: " + data.error); // Munculkan pop-up error
-                    throw new Error(data.error); // Paksa sistem mengubah loading menjadi 'Err'
+                    alert("Pesan dari Google Sheets: " + data.error);
+                    throw new Error(data.error);
                 }
                 
-                // Masukkan angka ke masing-masing kartu jika sukses
                 for (let key in elemen) {
                     if (elemen[key] && data[key] !== undefined) {
                         elemen[key].innerText = data[key];
@@ -385,16 +365,15 @@
                 
             } catch (error) {
                 console.error("Gagal mengambil data:", error);
-                // Jika error, ubah putaran loading menjadi tulisan Err
                 for (let key in elemen) {
                     if (elemen[key]) elemen[key].innerText = 'Err';
                 }
             }
         }
 
-        // Jalankan perintah saat halaman dibuka
         document.addEventListener('DOMContentLoaded', ambilDataPelayanan);
     </script>
+
     <!-- Script Pencarian NIK (Versi Lengkap 18 Data) -->
     <script>
         async function jalankanPencarian() {
@@ -414,15 +393,13 @@
                 </div>
             `;
 
-            // PASTIKAN LINK INI ADALAH MILIK ANDA
-            const urlAPI = 'https://script.google.com/macros/s/AKfycbz5KyCqhlUVUJwJclVZ8VtQQqihvLe6Tcuo4bBQXIvuj42AmORcy_s2D4kjdUhtN3wD/exec';
+            const urlAPI = 'https://script.google.com/macros/s/AKfycbwvbqJ-1IiVnwYJpeG4_MZkIhSPoUAL1kcg8l1CbCv8Qtfo_0QNRDl8EcREVnxSr7Nl/exec';
 
             try {
                 const response = await fetch(`${urlAPI}?action=cariNIK&nik=${nikInput}`);
                 const data = await response.json();
 
                 if (data.found) {
-                    // Render UI Biodata 2 Kolom
                     wadahHasil.innerHTML = `
                         <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
                             <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-lg shadow-inner"><i class="fa-solid fa-user-check"></i></div>
@@ -432,7 +409,7 @@
                             </div>
                         </div>
                         
-                        <!-- GRID KIRI DAN KANAN -->
+                        <!-- GRID KIRI DAN KANAN (18 Data Lengkap) -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
                             
                             <!-- KOLOM KIRI -->
@@ -462,6 +439,14 @@
                                     <span class="text-sm font-semibold text-slate-700">${data.agama || '-'}</span>
                                 </div>
                                 <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pendidikan Terakhir</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.pendidikan || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pekerjaan</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.pekerjaan || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
                                     <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Kewarganegaraan</span>
                                     <span class="text-sm font-semibold text-slate-700">${data.wargaNegara || '-'}</span>
                                 </div>
@@ -478,14 +463,6 @@
                                     <span class="text-sm font-semibold text-slate-700">Lingkungan ${data.lingkungan || '-'} <span class="text-slate-300 mx-1">|</span> RT ${data.rt || '-'}</span>
                                 </div>
                                 <div class="flex flex-col">
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pendidikan Terakhir</span>
-                                    <span class="text-sm font-semibold text-slate-700">${data.pendidikan || '-'}</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pekerjaan</span>
-                                    <span class="text-sm font-semibold text-slate-700">${data.pekerjaan || '-'}</span>
-                                </div>
-                                <div class="flex flex-col">
                                     <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status Perkawinan</span>
                                     <span class="text-sm font-semibold text-slate-700">${data.statusKawin || '-'}</span>
                                 </div>
@@ -494,8 +471,12 @@
                                     <span class="text-sm font-semibold text-slate-700">${data.statusKeluarga || '-'}</span>
                                 </div>
                                 <div class="flex flex-col">
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama Orang Tua (Ayah / Ibu)</span>
-                                    <span class="text-sm font-semibold text-slate-700">Ayah: ${data.ayah || '-'} <br> Ibu: ${data.ibu || '-'}</span>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama Ayah</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.ayah || '-'}</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama Ibu</span>
+                                    <span class="text-sm font-semibold text-slate-700">${data.ibu || '-'}</span>
                                 </div>
                             </div>
 
