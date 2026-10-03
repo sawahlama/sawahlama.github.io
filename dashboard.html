@@ -355,7 +355,7 @@
                     if (elemen[key]) elemen[key].innerHTML = loadingHtml;
                 }
                 
-                const response = await fetch(apiURL);
+                const response = await fetch(urlAPI);
                 const data = await response.json();
                 
                 if (data.error) {
