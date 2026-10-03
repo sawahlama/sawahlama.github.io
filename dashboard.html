@@ -282,7 +282,13 @@
             <div class="flex flex-col sm:flex-row gap-3">
                 <div class="relative flex-grow">
                     <i class="fa-regular fa-id-card absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                    <input type="number" id="input-nik" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400" placeholder="Masukkan NIK Warga...">
+                    <input type="text"
+                        id="input-nik"
+                        inputmode="numeric"
+                        maxlength="16"
+                        pattern="[0-9]{16}"
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400"
+                        placeholder="Masukkan 16 digit NIK Warga...">
                 </div>
                 <button onclick="jalankanPencarian()" class="bg-slate-900 hover:bg-brand-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 shrink-0">
                     <i class="fa-solid fa-search"></i> Cari Data
