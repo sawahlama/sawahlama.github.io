@@ -220,8 +220,28 @@
                 </div>
                 <div class="flex flex-col sm:flex-row gap-3 sm:items-end">
                     <div>
+                        <label for="filter-tahun" class="block text-xs font-bold text-slate-500 mb-1.5">Pilih Tahun</label>
+                        <select id="filter-tahun" class="w-full sm:w-32 border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/40">
+                            <option value="">Pilih tahun</option>
+                        </select>
+                    </div>
+                    <div>
                         <label for="filter-bulan" class="block text-xs font-bold text-slate-500 mb-1.5">Pilih Bulan</label>
-                        <input type="month" id="filter-bulan" class="w-full sm:w-auto border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/40">
+                        <select id="filter-bulan" class="w-full sm:w-40 border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/40">
+                            <option value="">Pilih bulan</option>
+                            <option value="01">Januari</option>
+                            <option value="02">Februari</option>
+                            <option value="03">Maret</option>
+                            <option value="04">April</option>
+                            <option value="05">Mei</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">Agustus</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
                     </div>
                     <button type="button" onclick="ambilRekapBulanan()" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
                         <i class="fa-solid fa-arrows-rotate"></i> Tampilkan
@@ -388,10 +408,18 @@
 
         async function ambilRekapBulanan() {
             const inputBulan = document.getElementById('filter-bulan');
+            const inputTahun = document.getElementById('filter-tahun');
             const status = document.getElementById('rekap-status');
-            const periode = inputBulan.value;
-            if (!periode) {
-                status.textContent = 'Silakan pilih bulan terlebih dahulu.';
+            const bulan = inputBulan.value;
+            const tahun = inputTahun.value;
+            if (!tahun || !bulan) {
+                status.textContent = 'Silakan pilih tahun dan bulan terlebih dahulu.';
+                return;
+            }
+            // Dropdown bulan sudah menggunakan dua digit, sehingga periode selalu YYYY-MM.
+            const periode = `${tahun}-${bulan}`;
+            if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(periode)) {
+                status.textContent = 'Tahun atau bulan tidak valid. Silakan pilih kembali.';
                 return;
             }
 
@@ -469,9 +497,21 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const input = document.getElementById('filter-bulan');
+            const inputBulan = document.getElementById('filter-bulan');
+            const inputTahun = document.getElementById('filter-tahun');
             const now = new Date();
-            input.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+            const tahunSekarang = now.getFullYear();
+
+            // Sediakan pilihan tahun dari 2020 sampai satu tahun setelah tahun berjalan.
+            for (let tahun = tahunSekarang + 1; tahun >= 2020; tahun--) {
+                const option = document.createElement('option');
+                option.value = String(tahun);
+                option.textContent = String(tahun);
+                inputTahun.appendChild(option);
+            }
+
+            inputTahun.value = String(tahunSekarang);
+            inputBulan.value = String(now.getMonth() + 1).padStart(2, '0');
             ambilRekapBulanan();
         });
     </script>
