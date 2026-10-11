@@ -211,6 +211,67 @@
 
         </div>
 
+        <!-- AREA REKAPITULASI PELAYANAN BULANAN -->
+        <section id="rekap-bulanan" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-7 border-b border-slate-100 pb-6">
+                <div>
+                    <h2 class="text-xl font-extrabold text-slate-900 tracking-tight"><i class="fa-solid fa-calendar-days text-brand-500 mr-2"></i> Rekapitulasi Pelayanan Bulanan</h2>
+                    <p class="text-sm text-slate-500 mt-1">Jumlah permohonan per jenis surat berdasarkan tanggal pengajuan di Google Sheets.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:items-end">
+                    <div>
+                        <label for="filter-bulan" class="block text-xs font-bold text-slate-500 mb-1.5">Pilih Bulan</label>
+                        <input type="month" id="filter-bulan" class="w-full sm:w-auto border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/40">
+                    </div>
+                    <button type="button" onclick="ambilRekapBulanan()" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrows-rotate"></i> Tampilkan
+                    </button>
+                    <button type="button" onclick="unduhRekapBulananCSV()" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-csv"></i> Unduh CSV
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-7">
+                <div class="rounded-2xl bg-brand-50 border border-brand-100 p-5">
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Total Permohonan</p>
+                    <p id="rekap-total" class="text-3xl font-black text-slate-900 mt-2">---</p>
+                    <p id="rekap-label-bulan" class="text-xs text-slate-500 mt-1">Pilih periode</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:col-span-2">
+                    <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Ringkasan</p>
+                    <p id="rekap-ringkasan" class="text-sm text-slate-600 leading-relaxed">Pilih bulan lalu tekan “Tampilkan” untuk menghitung permohonan dari data layanan.</p>
+                    <p id="rekap-status" role="status" class="text-xs text-slate-500 mt-2"></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+                <div class="border border-slate-200 rounded-2xl p-5">
+                    <h3 class="font-extrabold text-slate-800 mb-5">Jumlah per Jenis Surat</h3>
+                    <div id="rekap-grafik" class="space-y-5">
+                        <p class="text-sm text-slate-400">Data akan ditampilkan setelah periode dipilih.</p>
+                    </div>
+                </div>
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <div class="px-5 py-4 bg-slate-50 border-b border-slate-200">
+                        <h3 class="font-extrabold text-slate-800">Tabel Rekapitulasi</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-white text-slate-500 text-xs uppercase tracking-wider">
+                                <tr><th class="px-5 py-3 font-bold">No.</th><th class="px-5 py-3 font-bold">Jenis Surat</th><th class="px-5 py-3 font-bold text-right">Jumlah</th></tr>
+                            </thead>
+                            <tbody id="rekap-tabel" class="divide-y divide-slate-100">
+                                <tr><td colspan="3" class="px-5 py-6 text-center text-slate-400">Belum ada data ditampilkan.</td></tr>
+                            </tbody>
+                            <tfoot class="bg-slate-50 border-t border-slate-200"><tr><th colspan="2" class="px-5 py-4 text-left font-extrabold text-slate-800">TOTAL</th><th id="rekap-total-tabel" class="px-5 py-4 text-right font-black text-slate-900">---</th></tr></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-5"><i class="fa-solid fa-circle-info mr-1"></i> Rekap menghitung baris permohonan berdasarkan tanggal pada kolom pertama setiap spreadsheet layanan. Angka ini menunjukkan jumlah permohonan, bukan status selesai.</p>
+        </section>
+
         <!-- AREA REKAPITULASI KEPENDUDUKAN (RINCIAN RT) -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10">
             <div class="mb-8 border-b border-slate-100 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -301,6 +362,120 @@
 
     </main>
 
+
+    <!-- Script Rekapitulasi Pelayanan Bulanan -->
+    <script>
+        const API_REKAP_BULANAN = 'https://script.google.com/macros/s/AKfycbyu9HR-YTFjbGtr2Mmt0mGWuja7t6UGhoBZJ2KiAwluE6abH-DKRLAvBfh4KXHIBtTX/exec';
+        const LABEL_JENIS_SURAT = {
+            sktm: 'Surat Keterangan Tidak Mampu (SKTM)',
+            sku: 'Surat Keterangan Usaha (SKU)',
+            domisili: 'Surat Keterangan Domisili',
+            penghasilan: 'Surat Keterangan Penghasilan',
+            pindah: 'Surat Pindah',
+            kematian: 'Surat Kematian'
+        };
+        let dataRekapBulananTerakhir = null;
+
+        function formatAngkaRekap(nilai) {
+            return Number(nilai || 0).toLocaleString('id-ID');
+        }
+
+        function labelBulanIndonesia(periode) {
+            if (!/^\d{4}-\d{2}$/.test(periode || '')) return periode || '';
+            const [tahun, bulan] = periode.split('-').map(Number);
+            return new Date(tahun, bulan - 1, 1).toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+        }
+
+        async function ambilRekapBulanan() {
+            const inputBulan = document.getElementById('filter-bulan');
+            const status = document.getElementById('rekap-status');
+            const periode = inputBulan.value;
+            if (!periode) {
+                status.textContent = 'Silakan pilih bulan terlebih dahulu.';
+                return;
+            }
+
+            status.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Mengambil data dari Google Sheets...';
+            document.getElementById('rekap-total').textContent = '...';
+            try {
+                const response = await fetch(`${API_REKAP_BULANAN}?action=rekapBulanan&bulan=${encodeURIComponent(periode)}`);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+                if (!data.bulan || !data.jenis) throw new Error('API belum mengembalikan data rekap bulanan. Pastikan kode Apps Script rekap bulanan sudah ditambahkan dan deployment diperbarui.');
+
+                dataRekapBulananTerakhir = data;
+                renderRekapBulanan(data);
+                status.textContent = 'Data berhasil diperbarui dari Google Sheets.';
+            } catch (error) {
+                console.error('Gagal mengambil rekap bulanan:', error);
+                document.getElementById('rekap-total').textContent = '—';
+                document.getElementById('rekap-label-bulan').textContent = labelBulanIndonesia(periode);
+                document.getElementById('rekap-ringkasan').textContent = 'Rekap belum dapat dimuat. Periksa apakah kode API rekap bulanan sudah dipasang dan deployment Apps Script sudah diperbarui.';
+                document.getElementById('rekap-grafik').innerHTML = '<p class="text-sm text-rose-600">Data belum tersedia. API perlu diperbarui terlebih dahulu.</p>';
+                document.getElementById('rekap-tabel').innerHTML = '<tr><td colspan="3" class="px-5 py-6 text-center text-rose-500">Gagal memuat data rekap.</td></tr>';
+                document.getElementById('rekap-total-tabel').textContent = '—';
+                status.textContent = error.message || 'Terjadi kesalahan saat mengambil data.';
+            }
+        }
+
+        function renderRekapBulanan(data) {
+            const urutan = ['sktm', 'sku', 'domisili', 'penghasilan', 'pindah', 'kematian'];
+            const total = Number(data.total || 0);
+            document.getElementById('rekap-total').textContent = formatAngkaRekap(total);
+            document.getElementById('rekap-total-tabel').textContent = formatAngkaRekap(total);
+            document.getElementById('rekap-label-bulan').textContent = labelBulanIndonesia(data.bulan);
+            document.getElementById('rekap-ringkasan').textContent = total === 0
+                ? `Tidak ada permohonan yang tercatat pada ${labelBulanIndonesia(data.bulan)}.`
+                : `Terdapat ${formatAngkaRekap(total)} permohonan pada ${labelBulanIndonesia(data.bulan)} dari enam jenis layanan.`;
+
+            const grafik = document.getElementById('rekap-grafik');
+            const tabel = document.getElementById('rekap-tabel');
+            const warna = { sktm: 'bg-rose-500', sku: 'bg-blue-500', domisili: 'bg-emerald-500', penghasilan: 'bg-amber-500', pindah: 'bg-purple-500', kematian: 'bg-slate-600' };
+            grafik.innerHTML = '';
+            tabel.innerHTML = '';
+            urutan.forEach((key, index) => {
+                const jumlah = Number((data.jenis && data.jenis[key]) || 0);
+                const persen = total > 0 ? Math.round(jumlah / total * 100) : 0;
+                const item = document.createElement('div');
+                item.innerHTML = `<div class="flex items-start justify-between gap-3 mb-2"><span class="text-sm font-semibold text-slate-700">${LABEL_JENIS_SURAT[key]}</span><span class="text-sm font-extrabold text-slate-900 whitespace-nowrap">${formatAngkaRekap(jumlah)}</span></div><div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full ${warna[key]} rounded-full" style="width:${persen}%"></div></div><p class="text-xs text-slate-400 mt-1">${persen}% dari total</p>`;
+                grafik.appendChild(item);
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="px-5 py-3 text-slate-400">${index + 1}</td><td class="px-5 py-3 font-medium text-slate-700">${LABEL_JENIS_SURAT[key]}</td><td class="px-5 py-3 text-right font-bold text-slate-900">${formatAngkaRekap(jumlah)}</td>`;
+                tabel.appendChild(tr);
+            });
+        }
+
+        function unduhRekapBulananCSV() {
+            if (!dataRekapBulananTerakhir) {
+                alert('Tampilkan rekap bulan terlebih dahulu sebelum mengunduh.');
+                return;
+            }
+            const data = dataRekapBulananTerakhir;
+            const rows = [['Periode', labelBulanIndonesia(data.bulan)], ['Jenis Surat', 'Jumlah Permohonan']];
+            ['sktm', 'sku', 'domisili', 'penghasilan', 'pindah', 'kematian'].forEach(key => rows.push([LABEL_JENIS_SURAT[key], Number((data.jenis && data.jenis[key]) || 0)]));
+            rows.push(['TOTAL', Number(data.total || 0)]);
+            const csv = '\uFEFF' + rows.map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(';')).join('\r\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Rekap_Pelayanan_SOBAT_LAMA_${data.bulan}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('filter-bulan');
+            const now = new Date();
+            input.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+            ambilRekapBulanan();
+        });
+    </script>
+
     <!-- FOOTER ADMIN -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center mt-auto">
         <p class="text-slate-400 text-sm font-medium">&copy; Sistem Portal Sobat Lama - Panel Admin Internal</p>
@@ -347,7 +522,7 @@
                 rt10_lk2: document.getElementById('angka-rt10-lk2')
             };
             
-            const urlAPI = 'https://script.google.com/macros/s/AKfycbwvbqJ-1IiVnwYJpeG4_MZkIhSPoUAL1kcg8l1CbCv8Qtfo_0QNRDl8EcREVnxSr7Nl/exec'; 
+            const urlAPI = 'https://script.google.com/macros/s/AKfycbyu9HR-YTFjbGtr2Mmt0mGWuja7t6UGhoBZJ2KiAwluE6abH-DKRLAvBfh4KXHIBtTX/exec'; 
 
             try {
                 const loadingHtml = '<i class="fa-solid fa-spinner fa-spin text-2xl opacity-50"></i>';
